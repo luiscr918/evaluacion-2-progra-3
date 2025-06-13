@@ -37,31 +37,30 @@ private UsuarioServicio usuarioServicio;
     }
     //Insertar una nueva factura
     //1.amuestro mi form y la nueva factura que ingrese la guardo en la variable factura
-    @GetMapping("/formulario")
-    public String mostrarFormularioReserva(@RequestParam Long usuarioId,
-                                           @RequestParam Long instalacionId,
+    @GetMapping("/formulario/reserva/{id}")
+    public String mostrarFormularioReserva(@PathVariable Long id,
                                            Model model){
         // Aquí cargo los objetos de cliente y producto según los IDs
-        Optional<Usuario> usuario = usuarioServicio.buscarUsuarioId(usuarioId);
-        Optional<Instalacion> instalacion = instalacionServicio.buscarInstalacionId(instalacionId);
-
+        Optional<Usuario> usuarioOp = usuarioServicio.buscarUsuarioId(id);
+        Usuario usuario=usuarioOp.get();
         Reserva reserva = new Reserva();
-        reserva.setUsuario(usuario.get());
-        reserva.setInstalacion(instalacion.get());
+        reserva.setUsuario(usuario);
+        List<Instalacion> instalaciones=instalacionServicio.mostrarInstalaciones();
+        model.addAttribute("instalaciones",instalaciones);
         model.addAttribute("reserva", reserva);
         return "Reserva/formulario"; // Tu formulario
     }
     //2.guardo el factura que ingreso
-    @PostMapping("/guardar")
+    @PostMapping("/reservas/guardar")
     public String guardarReserva(Reserva reserva){
         reservaServicio.guardarReserva(reserva);
         return "redirect:/reservas";
     }
     //Actualizar el factura
-    @GetMapping("/actualizar/{id}")
+    @GetMapping("/editar/reserva/{id}/{usuarioId}/{instalacionId}")
     public String actualizarFactura(@PathVariable Long id,
-                                    @RequestParam Long usuarioId,
-                                    @RequestParam Long instalacionId,
+                                    @PathVariable Long usuarioId,
+                                    @PathVariable Long instalacionId,
                                     Model model){
 
         Optional<Reserva> reservaOp=reservaServicio.buscarReservaId(id);
@@ -74,9 +73,9 @@ private UsuarioServicio usuarioServicio;
         return "Reserva/formulario";
     }
     //Eliminar un factura
-    /*@GetMapping("/eliminar/{id}")
-    public String eliminarFactura(@PathVariable Long id){
-        facturaService.eliminarFactura(id);
-        return "redirect:/factura/lista";
-    }*/
+    @GetMapping("/eliminar/reserva/{id}")
+    public String eliminarReserva(@PathVariable Long id){
+        reservaServicio.eliminarReserva(id);
+        return "redirect:/reservas";
+    }
 }

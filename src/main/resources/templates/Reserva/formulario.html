@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" >
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Registro de Reserva</title>
@@ -9,9 +9,10 @@
 <body class="bg-light">
 <div class="container mt-5">
     <h2 class="mb-4">Registro de Reserva</h2>
-    <form action="@{/reservas/guardar}" method="post" >
+    <form th:action="@{/reservas/guardar}" method="post" th:object="${reserva}" >
         <!-- Campo oculto para ID -->
         <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{usuario.id}" />
 
         <!-- Descripción -->
         <div class="form-group mb-3">
@@ -38,7 +39,6 @@
         <div class="form-group mb-3">
             <label for="instalacion">Instalación</label>
             <select id="instalacion" name="instalacion.id" th:field="*{instalacion.id}" class="form-control" required>
-                <option value="" disabled selected>Seleccione una instalación</option>
                 <option th:each="inst : ${instalaciones}"
                         th:value="${inst.id}"
                         th:text="${inst.nombre}">

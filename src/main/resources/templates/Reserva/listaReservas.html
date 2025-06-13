@@ -39,8 +39,12 @@
             <td th:text="${reserva.usuario.nombre}"></td>
             <td th:text="${reserva.instalacion.nombre}"></td>
             <td>
-                <a th:href="@{/reservas/actualizar/{id}(id=${reserva.id})}" class="btn btn-warning">Editar</a>
-                <a th:href="@{/reservas/eliminar/{id}(id=${reserva.id})}" class="btn btn-danger"
+                <a th:href="@{/editar/reserva/{id}/{usuarioId}/{instalacionId}(
+    id=${reserva.id},
+    usuarioId=${reserva.usuario.id},
+    instalacionId=${reserva.instalacion.id}
+)}" class="btn btn-warning">Editar</a>
+                <a th:href="@{/eliminar/reserva/}+${reserva.id}" class="btn btn-danger"
                    onclick="return confirm('¿Seguro que deseas eliminar esta reserva?');">Eliminar</a>
             </td>
         </tr>
