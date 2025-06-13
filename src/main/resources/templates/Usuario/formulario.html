@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario - SportZone</title>
+
+    <!-- Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-100">
+<!-- Barra de navegación -->
+<nav class="bg-blue-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold">SportZone</a>
+        <div>
+            <a href="index.html" class="px-4">Inicio</a>
+            <a href="login.html" class="px-4">Iniciar Sesión</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Sección de registro de usuario -->
+<section class="container mx-auto py-8 max-w-md">
+    <h2 class="text-3xl font-semibold text-center mb-6">Registro de Usuario</h2>
+
+    <form th:action="@{/guardar-usuario}" method="POST" th:object="${usuario}" class="bg-white p-8 rounded-lg shadow-lg">
+        <div hidden class="mb-3">
+            <label  for="codigo" class="form-label ">Código</label>
+            <input  type="number" class="form-control " id="codigo" th:field="*{id}">
+        </div>
+        <div class="mb-4">
+            <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
+            <input th:field="*{nombre}" type="text" id="nombre" name="nombre" required class="mt-2 block w-full p-2 border border-gray-300 rounded-lg" />
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+            <input th:field="*{email}" type="email" id="email" name="email" required class="mt-2 block w-full p-2 border border-gray-300 rounded-lg" />
+        </div>
+        <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+            <input th:field="*{password}" type="password" id="password" name="password" required class="mt-2 block w-full p-2 border border-gray-300 rounded-lg" />
+        </div>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Registrar</button>
+        </div>
+    </form>
+</section>
+
+<!-- Flowbite JS -->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@1.5.1/dist/flowbite.min.js"></script>
+</body>
+
+</html>

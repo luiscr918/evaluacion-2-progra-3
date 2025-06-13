@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportZone - Sistema de Reservas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.5.1/dist/flowbite.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-100">
+<!-- Barra de navegación -->
+<nav class="bg-blue-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold">SportZone</a>
+        <div>
+            <a href="#reservas" class="px-4">Reservas</a>
+            <a href="#login" class="px-4">Iniciar Sesión</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Sección de reservas -->
+<section id="reservas" class="container mx-auto py-8">
+    <h2 class="text-3xl font-semibold text-center mb-6">Instalaciones Disponibles</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card de una instalación -->
+        <div class="bg-white rounded-lg shadow-lg p-4">
+            <h3 class="text-xl font-bold">Cancha de Fútbol</h3>
+            <p>Precio por hora: $50</p>
+            <p>Disponibilidad: 10:00 AM - 5:00 PM</p>
+            <a href="#reservar" class="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded">Reservar</a>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-4">
+            <h3 class="text-xl font-bold">Piscina</h3>
+            <p>Precio por hora: $30</p>
+            <p>Disponibilidad: 8:00 AM - 6:00 PM</p>
+            <a href="#reservar" class="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded">Reservar</a>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-4">
+            <h3 class="text-xl font-bold">Cancha de Tenis</h3>
+            <p>Precio por hora: $40</p>
+            <p>Disponibilidad: 9:00 AM - 4:00 PM</p>
+            <a href="#reservar" class="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded">Reservar</a>
+        </div>
+    </div>
+</section>
+
+<!-- Flowbite JS -->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@1.5.1/dist/flowbite.min.js"></script>
+</body>
+
+</html>
